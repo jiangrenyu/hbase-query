@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration debug="false" xmlns:log4j="http://jakarta.apache.org/log4j/">
+	<!-- 标准输出即控制台输出 -->
+	<appender name="stdoutAppender" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss}][%l][%p]-%m%n"/>
+		</layout>
+	</appender>
+	<!-- 记录流水日志，每天产生一个文件 -->
+	<appender name="fileAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="../logs/ftpparser.log"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss}][%l][%p]-%m%n"/>
+		</layout>
+	</appender>
+	<!-- 数据库日志 -->
+	<appender name="dbAppender" class="com.inspur.ftpparserframework.log.log4j.DbAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss}][%l][%p]-%m%n"/>
+		</layout>
+	</appender>
+	<!-- 设置输出的日志级别，调试时可调整为DEBUG，能够输出更详细的信息 -->
+	<root>
+		<level value="INFO"/>
+		<appender-ref ref="stdoutAppender"/>
+		<appender-ref ref="fileAppender"/>
+		<!-- <appender-ref ref="dbAppender"/> -->
+	</root>
+</log4j:configuration>

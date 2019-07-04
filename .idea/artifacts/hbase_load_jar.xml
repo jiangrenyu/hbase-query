@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="hbase-load.jar">
+    <output-path>E:/temp</output-path>
+    <root id="archive" name="hbase-query.jar">
+      <element id="module-output" name="com.hbase" />
+    </root>
+  </artifact>
+</component>
